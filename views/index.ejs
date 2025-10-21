@@ -1,13 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Homepage</title>
-</head>
-<body>
-    This is Homepage
-    <a href="/log-in">Login</a>
-    <a href="/sign-up">Sign up</a>
-</body>
+  </head>
+  <body>
+    <% if (typeof message !== "undefined" && message) { %>
+    <h4><%= message %></h4>
+    <% } %> 
+
+    <% if (user) { %>
+      <h1>Welcome back <%= user.username %></h1>
+      <a href="/log-out">Log out</a>
+        <% if (messages) { 
+            messages.forEach(message => { %>
+              <h2>Title: <%= message.title %></h2>
+              <h3><%= message.content %></h3>
+              <h4>Author: <%= message.author %></h4>
+            <% }); %>
+        <% } %>
+    <% } else { %>
+      <h1>Log in to participate in our community!</h1>
+      <a href="/log-in">Login</a>
+      <a href="/sign-up">Sign up</a>
+      <% if (messages) { 
+        messages.forEach(message => { %>
+          <h2>Title: <%= message.title %></h2>
+          <h3><%= message.content %></h3>
+          <h4>Author: Anonymous</h4>
+        <% }); %>
+      <% } %>
+    <% } %>
+  </body>
 </html>
