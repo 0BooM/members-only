@@ -13,6 +13,15 @@
     <% if (user) { %>
       <h1>Welcome back <%= user.username %></h1>
       <a href="/log-out">Log out</a>
+
+      <% if (!user.membership) { %>
+        <h2>Become a member to post messages!</h2>
+        <form action="/become-member/<%= user.id %>" method="get" onsubmit="return confirm('Are you sure you want to become a member?');">
+          <input type="submit" value="Become a member">
+        </form>
+      <% } else {%>
+        <h2>You are a member! Write something...</h2>
+      <% } %>
         <% if (messages) { 
             messages.forEach(message => { %>
               <h2>Title: <%= message.title %></h2>

@@ -4,7 +4,8 @@ require("dotenv").config();
 const USERS_TABLE = `CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     username VARCHAR(100) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL
+    password VARCHAR(255) NOT NULL,
+    membership BOOLEAN DEFAULT FALSE NOT NULL
 );`;
 
 const MESSAGES_TABLE = `CREATE TABLE IF NOT EXISTS messages (
