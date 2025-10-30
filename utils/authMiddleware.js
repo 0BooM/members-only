@@ -10,6 +10,6 @@ exports.isMember = (req, res, next) => {
   if (req.isAuthenticated() && req.user && req.user.membership === true) {
     next();
   } else {
-    res.status(403).send("Membership required.");
+    res.status(403).send("You need to have a membership to access this resource.");
   }
 };

@@ -34,6 +34,10 @@ app.use("/", IndexRouter);
 const registrationRouter = require("./routes/RegistrationRouter");
 app.use("/", registrationRouter);
 
+//Messages
+const messageRouter = require("./routes/MessageRouter");
+app.use("/", messageRouter);
+
 app.use((req, res) => {
   res.status(404).render("404");
 });
