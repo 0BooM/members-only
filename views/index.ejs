@@ -26,8 +26,14 @@
             messages.forEach(message => { %>
               <h2>Title: <%= message.title %></h2>
               <h3>Content: <%= message.content %></h3>
-              <h4>Author: <%= message.author %></h4>
-              <h4>Date: <%= message.formatted_date %></h4>
+              <h4>Author: 
+                <% if(user.membership) {%>  
+                  <%= message.author %> 
+                <%} else {%> Anonymous <% } %>
+                </h4>
+              <h4>Date: <% if(user.membership) {%>  
+                  <%= message.formatted_date %> 
+                <%} else {%> Unknown <% } %></h4>
             <% }); %>
         <% } %>
     <% } else { %>

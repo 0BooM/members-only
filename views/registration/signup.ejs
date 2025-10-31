@@ -6,12 +6,21 @@
     <title>Sign-up</title>
 </head>
 <body>
-    Sign-up
+   <h1>Sign-up</h1>
+    <% if (typeof errors !== "undefined" && errors.length > 0) { %>
+        <ul style="color: red;">
+            <% errors.forEach(function(error) { %>
+                <li><%= error.msg %></li>
+            <% }); %>
+        </ul>
+    <% } %>
      <form action="/sign-up" method="POST">
         <label for="username">Username:</label>
-        <input type="text" id="username" name="username">
-        <label for="password">Password</label>
-        <input type="password" name="password" id="password">
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required minlength="5">
+        <label for="conf_password">Confirm password:</label>
+        <input type="password" name="conf_password" id="conf_password" required minlength="5">
         <input type="submit" value="Signup">
     </form>
 </body>
