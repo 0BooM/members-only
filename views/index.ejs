@@ -15,8 +15,8 @@
       <a href="/log-out">Log out</a>
       <a href="/<%= user.id %>/create-message">Create new message!</a>
       <% if (!user.membership) { %>
-        <h2>Become a member to post messages!</h2>
-        <form action="/become-member/<%= user.id %>" method="get" onsubmit="return confirm('Are you sure you want to become a member?');">
+        <a href="/become-member/<%= user.id %>"><h2>Become a member to post messages!</h2></a>
+        <form action="/become-member/<%= user.id %>" method="post" onsubmit="return confirm('Are you sure you want to become a member?');">
           <input type="submit" value="Become a member">
         </form>
       <% } else {%>
@@ -34,6 +34,10 @@
               <h4>Date: <% if(user.membership) {%>  
                   <%= message.formatted_date %> 
                 <%} else {%> Unknown <% } %></h4>
+              <% if (user.admin) { %> 
+              <form action="/delete/<%= message.id %>" method="post" onsubmit="return confirm('Are you sure to delete this message?')">
+                <input type="submit" value="Delete"></form>  
+            <% } %>
             <% }); %>
         <% } %>
     <% } else { %>

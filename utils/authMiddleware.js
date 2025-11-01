@@ -13,3 +13,11 @@ exports.isMember = (req, res, next) => {
     res.status(403).send("You need to have a membership to access this resource.");
   }
 };
+
+exports.isAdmin = (req, res, next) => {
+  if(req.isAuthenticated() && req.user && req.user.admin){
+    next();
+  } else {
+    res.status(401).send("You need to be an admin to do this.");
+  }
+}

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Become member</title>
+  </head>
+  <body>
+    <form action="/become-member/<%= user.id %>" method="post">
+      <label for="code">Code:</label>
+      <input type="text" name="code" id="code" />
+      <input type="submit" value="Become a member" />
+    </form>
+  </body>
+</html>

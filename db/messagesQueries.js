@@ -22,3 +22,7 @@ exports.createMessage = async (title, content, userId) => {
     [title, content, userId]
   );
 };
+
+exports.deleteMessage = async (id) => {
+  await pool.query(`DELETE FROM messages WHERE id=$1`, [id]);
+}
